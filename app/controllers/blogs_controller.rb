@@ -37,6 +37,12 @@ class BlogsController < ApplicationController
     end
   end
 
+  def confirm
+    @blog = Blog.new(blog_params)
+      binding.pry  #ここに追記
+      render :new if @blog.invalid?
+  end
+
   def destroy
     @blog = Blog.find(params[:id])
     @blog.destroy
